@@ -47,7 +47,7 @@
                 const handleScroll = () => setScrolled(window.scrollY > 50);
                 window.addEventListener('scroll', handleScroll);
                 
-                // Cálculo dinámico del tiempo en IPSOS
+                // Cálculo dinámico del tiempo en IPSOS (Desde Enero 2023)
                 const startDate = new Date(2023, 0, 1); 
                 const today = new Date();
                 let years = today.getFullYear() - startDate.getFullYear();
@@ -226,7 +226,7 @@
                                                         <span className="text-sm font-bold text-emerald-600">{item.period}</span>
                                                         {item.showCounter && (
                                                             <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 flex items-center gap-1">
-                                                                <Icon name="clock" size={10} /> {timeAtIpsos} de experiencia
+                                                                <Icon name="clock" size={10} /> {timeAtIpsos} en este rol
                                                             </span>
                                                         )}
                                                     </div>
@@ -234,7 +234,7 @@
                                                 <h3 className="text-2xl font-serif text-slate-900 mb-1">{item.role}</h3>
                                                 <p className="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-4">{item.company}</p>
                                                 <p className="text-slate-600 mb-6 leading-relaxed text-sm">{item.description}</p>
-                                                <ul className="space-y-3">
+                                                <ul className="space-y-3 border-t border-slate-50 pt-4 mt-4">
                                                     {item.highlights.map((h, i) => (
                                                         <li key={i} className="flex gap-3 text-sm text-slate-500">
                                                             <Icon name="chevron-right" size={14} className="text-emerald-500 shrink-0 mt-0.5" />
@@ -251,27 +251,44 @@
                         </div>
                     </section>
 
-                    {/* Contact Section */}
-                    <section id="contact" className="py-24 px-6 bg-slate-900 text-white overflow-hidden relative">
+                    {/* Contact Section - REFORZADA */}
+                    <section id="contact" className="py-32 px-6 bg-slate-900 text-white overflow-hidden relative">
                         <div className="absolute top-0 right-0 w-1/3 h-full bg-emerald-600/10 skew-x-12 translate-x-20"></div>
-                        <div className="container mx-auto max-w-4xl relative z-10 text-center space-y-8">
-                            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
-                                ¿Buscando un PM que hable el lenguaje del <br />
-                                <span className="text-emerald-400">negocio y de los datos?</span>
-                            </h2>
-                            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                                Abierto a nuevas oportunidades para liderar proyectos de alto impacto donde la estrategia y la tecnología se unan para transformar la experiencia del cliente.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                                <a href="tel:+34691858279" className="px-8 py-4 bg-emerald-600 text-white rounded-full font-bold hover:bg-emerald-500 transition-all flex items-center justify-center gap-2">
-                                    <Icon name="phone" size={20} /> +34 691 85 82 79
+                        <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-emerald-600/5 -skew-x-12 -translate-x-10"></div>
+                        
+                        <div className="container mx-auto max-w-4xl relative z-10 text-center space-y-12">
+                            <div className="space-y-4">
+                                <h2 className="text-4xl md:text-6xl font-serif leading-tight">
+                                    ¿Buscando un PM que hable el lenguaje del <br />
+                                    <span className="text-emerald-400 italic">negocio y de los datos?</span>
+                                </h2>
+                                <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                                    Actualmente abierto a nuevas oportunidades para liderar proyectos de alto impacto donde la estrategia y la tecnología se unan para transformar la experiencia del cliente.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
+                                <a href="tel:+34691858279" className="group bg-white/5 hover:bg-emerald-600 border border-white/10 hover:border-emerald-500 p-8 rounded-3xl transition-all duration-300">
+                                    <Icon name="phone" size={32} className="text-emerald-400 group-hover:text-white mb-4" />
+                                    <h4 className="text-xs uppercase tracking-widest text-slate-500 group-hover:text-emerald-100 mb-2">Teléfono</h4>
+                                    <p className="text-lg font-bold">+34 691 85 82 79</p>
                                 </a>
-                                <a href="mailto:mariogbisbe@gmail.com" className="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-full font-bold hover:bg-white/20 transition-all flex items-center justify-center gap-2">
-                                    <Icon name="mail" size={20} /> mariogbisbe@gmail.com
+                                
+                                <a href="mailto:mariogbisbe@gmail.com" className="group bg-white/5 hover:bg-emerald-600 border border-white/10 hover:border-emerald-500 p-8 rounded-3xl transition-all duration-300">
+                                    <Icon name="mail" size={32} className="text-emerald-400 group-hover:text-white mb-4" />
+                                    <h4 className="text-xs uppercase tracking-widest text-slate-500 group-hover:text-emerald-100 mb-2">Email</h4>
+                                    <p className="text-lg font-bold">mariogbisbe@gmail.com</p>
                                 </a>
-                                <a href="https://linkedin.com/in/mariogbisbe" target="_blank" rel="noreferrer" className="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-full font-bold hover:bg-white/20 transition-all flex items-center justify-center gap-2">
-                                    <Icon name="linkedin" size={20} /> LinkedIn
+
+                                <a href="https://linkedin.com/in/mariogbisbe" target="_blank" rel="noreferrer" className="group bg-white/5 hover:bg-emerald-600 border border-white/10 hover:border-emerald-500 p-8 rounded-3xl transition-all duration-300">
+                                    <Icon name="linkedin" size={32} className="text-emerald-400 group-hover:text-white mb-4" />
+                                    <h4 className="text-xs uppercase tracking-widest text-slate-500 group-hover:text-emerald-100 mb-2">LinkedIn</h4>
+                                    <p className="text-lg font-bold">Ver Perfil</p>
                                 </a>
+                            </div>
+
+                            <div className="pt-12">
+                                <p className="text-slate-500 text-sm font-medium uppercase tracking-[0.2em]">Basado en Madrid, España</p>
                             </div>
                         </div>
                     </section>
@@ -291,11 +308,16 @@
                         </div>
                     </footer>
                     
-                    {/* Botón Flotante CV */}
+                    {/* Botón Flotante LinkedIn */}
                     <div className="fixed bottom-8 right-8 z-40">
-                        <button className="w-14 h-14 bg-emerald-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform group">
-                            <Icon name="external-link" size={24} />
-                        </button>
+                        <a 
+                            href="https://linkedin.com/in/mariogbisbe" 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="w-14 h-14 bg-emerald-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all group"
+                        >
+                            <Icon name="linkedin" size={24} />
+                        </a>
                     </div>
 
                 </div>
