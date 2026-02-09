@@ -31,21 +31,6 @@
             transform: translateY(-5px);
         }
 
-        .client-logo-img {
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: all 0.4s ease;
-            max-height: 80px; 
-            width: auto;
-            max-width: 220px;
-            object-fit: contain;
-        }
-        .client-logo-img:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
         [data-lucide] {
             visibility: hidden;
         }
@@ -71,6 +56,7 @@
 
         const App = () => {
             const [scrolled, setScrolled] = useState(false);
+            const [lang, setLang] = useState('es');
             const [timeAtIpsos, setTimeAtIpsos] = useState('');
 
             useEffect(() => {
@@ -82,97 +68,214 @@
                 let years = today.getFullYear() - startDate.getFullYear();
                 let months = today.getMonth() - startDate.getMonth();
                 if (months < 0) { years--; months += 12; }
-                const timeString = `${years} ${years === 1 ? 'año' : 'años'}${months > 0 ? ` y ${months} ${months === 1 ? 'mes' : 'meses'}` : ''}`;
+                
+                const timeString = lang === 'es' 
+                    ? `${years} ${years === 1 ? 'año' : 'años'}${months > 0 ? ` y ${months} ${months === 1 ? 'mes' : 'meses'}` : ''}`
+                    : `${years} ${years === 1 ? 'year' : 'years'}${months > 0 ? ` and ${months} ${months === 1 ? 'month' : 'months'}` : ''}`;
+                
                 setTimeAtIpsos(timeString);
 
                 return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
+            }, [lang]);
 
-            const projects = [
-                {
-                    title: "Programa Global CX: Automoción",
-                    tags: ["Medallia", "JIRA", "PM"],
-                    impact: "Optimización Operativa",
-                    details: {
-                        situacion: "Despliegue de programa de voz del cliente en +30 mercados.",
-                        desafio: "Desconexión entre requerimientos locales y arquitectura técnica global.",
-                        solucion: "Liderazgo en la estandarización de procesos y dashboards en Medallia.",
-                        resultado: "Reducción del 25% en tiempos de implementación por mercado."
-                    }
+            const content = {
+                es: {
+                    nav: { profile: "Perfil", projects: "Proyectos", career: "Trayectoria", contact: "Contacto" },
+                    hero: {
+                        tag: "Senior Project Manager & Data Strategist",
+                        title: "Liderazgo de proyectos con ",
+                        titleAccent: "visión de datos.",
+                        desc: "Gestión de proyectos de experiencia de cliente mediante el manejo de datos avanzado y de equipos."
+                    },
+                    projects: {
+                        title: "Portfolio de Impacto",
+                        subtitle: "Casos de éxito estructurados por resultados tangibles.",
+                        labels: {
+                            impact: "Impacto",
+                            challenge: "Situación & Desafío",
+                            solution: "Solución & Resultado"
+                        },
+                        items: [
+                            {
+                                title: "Programa Global CX: Automoción",
+                                tags: ["Medallia", "JIRA", "PM"],
+                                impact: "Optimización Operativa",
+                                situacion: "Despliegue de programa de voz del cliente en +30 mercados.",
+                                desafio: "Desconexión entre requerimientos locales y arquitectura técnica global.",
+                                solucion: "Liderazgo en la estandarización de procesos y dashboards en Medallia.",
+                                resultado: "Reducción del 25% en tiempos de implementación por mercado."
+                            },
+                            {
+                                title: "Automatización de Big Data",
+                                tags: ["R Programming", "Tidyverse"],
+                                impact: "Eficiencia Analítica",
+                                situacion: "Procesamiento manual de grandes volúmenes de datos semanales.",
+                                desafio: "Alto riesgo de error humano y cuellos de botella en la entrega.",
+                                solucion: "Desarrollo de scripts en R para limpieza y estructuración automática.",
+                                resultado: "Ahorro de 15 horas semanales de trabajo manual por analista."
+                            },
+                            {
+                                title: "Consultoría de Insights Estratégicos",
+                                tags: ["Data Strategy", "Reporting"],
+                                impact: "Impacto en Negocio",
+                                situacion: "Exceso de métricas complejas sin una narrativa clara para el board.",
+                                desafio: "Dificultad para convertir KPIs en decisiones accionables.",
+                                solucion: "Rediseño de reporting ejecutivo enfocado en story-telling de datos.",
+                                resultado: "Aprobación de 3 nuevas líneas de inversión basadas en insights detectados."
+                            },
+                            {
+                                title: "Visualización de Datos",
+                                tags: ["R", "Ggplot", "DataViz"],
+                                impact: "Democratización del Dato",
+                                situacion: "Gran cantidad de datos para informes off-platform.",
+                                desafio: "Dificultad para establecer decisiones de los reportes.",
+                                solucion: "Creación de gráficos dinámicos y ad-hoc usando ggplot y plotly (R).",
+                                resultado: "Reducción del número de slides por informe y concentración del cliente en los datos más importantes."
+                            }
+                        ]
+                    },
+                    experience: {
+                        title: "Trayectoria Profesional y Académica",
+                        subtitle: "Sólida base técnica con enfoque en comunicación estratégica.",
+                        expertise: "de expertise",
+                        items: [
+                            {
+                                company: 'IPSOS',
+                                role: 'Project Manager & Data Strategist',
+                                period: 'Enero 2023 - Presente',
+                                showCounter: true,
+                                description: 'Dirección integral del programa global de Customer Experience para SEAT y CUPRA, liderando equipos internacionales.',
+                                highlights: [
+                                    'Gestión del ciclo de vida del producto CX: Desde la toma de requerimientos con stakeholders hasta el despliegue técnico global.',
+                                    'Liderazgo de equipos multidisciplinares asegurando el 100% de cumplimiento de hitos críticos mediante JIRA y Smartsheet.',
+                                    'Optimización estratégica: Uso de programación en R para automatizar el reporting de Big Data.',
+                                    'Consultoría de negocio: Traducción de necesidades complejas en arquitecturas de datos accionables.'
+                                ]
+                            },
+                            {
+                                company: 'Universidad Carlos III',
+                                role: 'Máster en Análisis Político y Electoral',
+                                period: '2022 - 2023',
+                                description: 'Especialización en metodología cuantitativa y gestión de proyectos de investigación de datos a gran escala.',
+                                highlights: [
+                                    'Dominio de estadística avanzada y programación orientada a la resolución de problemas complejos.',
+                                    'Desarrollo de herramientas de automatización para Web Scraping y procesamiento de datos.'
+                                ]
+                            },
+                            {
+                                company: 'Universidad de Málaga',
+                                role: 'Grado en Publicidad y RRPP',
+                                period: '2018 - 2022',
+                                description: 'Formación base en comunicación corporativa, gestión de cuentas y estrategia de marca.',
+                                highlights: [
+                                    'Especialización en organizar, gestionar y comunicar la imagen de una organización.',
+                                    'Capacidad para establecer relaciones sólidas en contextos B2B o B2C.'
+                                ]
+                            }
+                        ]
+                    },
+                    contact: { title: "¿Hablamos?" }
                 },
-                {
-                    title: "Automatización de Big Data",
-                    tags: ["R Programming", "Tidyverse"],
-                    impact: "Eficiencia Analítica",
-                    details: {
-                        situacion: "Procesamiento manual de grandes volúmenes de datos semanales.",
-                        desafio: "Alto riesgo de error humano y cuellos de botella en la entrega.",
-                        solucion: "Desarrollo de scripts en R para limpieza y estructuración automática.",
-                        resultado: "Ahorro de 15 horas semanales de trabajo manual por analista."
-                    }
-                },
-                {
-                    title: "Consultoría de Insights Estratégicos",
-                    tags: ["Data Strategy", "Reporting"],
-                    impact: "Impacto en Negocio",
-                    details: {
-                        situacion: "Exceso de métricas complejas sin una narrativa clara para el board.",
-                        desafio: "Dificultad para convertir KPIs en decisiones accionables.",
-                        solucion: "Rediseño de reporting ejecutivo enfocado en story-telling de datos.",
-                        resultado: "Aprobación de 3 nuevas líneas de inversión basadas en insights detectados."
-                    }
-                },
-                {
-                    title: "Visualización de Datos",
-                    tags: ["R", "Ggplot", "DataViz"],
-                    impact: "Democratización del Dato",
-                    details: {
-                        situacion: "Gran cantidad de datos para informes off-platform.",
-                        desafio: "Dificultad para establecer decisiones de los reportes.",
-                        solucion: "Creación de gráficos dinámicos y ad-hoc usando ggplot y plotly (R).",
-                        resultado: "Reducción del número de slides por informe y concentración del cliente en los datos más importantes."
-                    }
+                en: {
+                    nav: { profile: "Profile", projects: "Projects", career: "Career", contact: "Contact" },
+                    hero: {
+                        tag: "Senior Project Manager & Data Strategist",
+                        title: "Leading projects with a ",
+                        titleAccent: "data-driven vision.",
+                        desc: "Manage customer experience projects through advanced data analysis and international team leadership."
+                    },
+                    projects: {
+                        title: "Impact Portfolio",
+                        subtitle: "Success stories structured by tangible results.",
+                        labels: {
+                            impact: "Impact",
+                            challenge: "Situation & Challenge",
+                            solution: "Solution & Result"
+                        },
+                        items: [
+                            {
+                                title: "Global CX Program: Automotive",
+                                tags: ["Medallia", "JIRA", "PM"],
+                                impact: "Operational Optimization",
+                                situacion: "Deployment of VoC programs across 30+ markets.",
+                                desafio: "Gap between local requirements and global technical architecture.",
+                                solucion: "Leading standardization of processes and dashboards in Medallia.",
+                                resultado: "25% reduction in implementation time per market."
+                            },
+                            {
+                                title: "Big Data Automation",
+                                tags: ["R Programming", "Tidyverse"],
+                                impact: "Analytical Efficiency",
+                                situacion: "Manual processing of high-volume weekly data.",
+                                desafio: "High risk of human error and delivery bottlenecks.",
+                                solucion: "Development of R scripts for automatic cleaning and structuring.",
+                                resultado: "Saved 15 hours per week of manual work per analyst."
+                            },
+                            {
+                                title: "Strategic Insights Consulting",
+                                tags: ["Data Strategy", "Reporting"],
+                                impact: "Business Impact",
+                                situacion: "Excess of complex metrics without a clear narrative for the board.",
+                                desafio: "Difficulty converting KPIs into actionable decisions.",
+                                solucion: "Redesign of executive reporting focused on data storytelling.",
+                                resultado: "Approval of 3 new investment lines based on detected insights."
+                            },
+                            {
+                                title: "Data Visualization",
+                                tags: ["R", "Ggplot", "DataViz"],
+                                impact: "Data Democratization",
+                                situacion: "Large amount of data for off-platform reports.",
+                                desafio: "Difficulty in establishing decisions from the reports.",
+                                solucion: "Creation of dynamic and ad-hoc charts using ggplot and plotly (R).",
+                                resultado: "Reduction in slides per report and improved client focus on key data."
+                            }
+                        ]
+                    },
+                    experience: {
+                        title: "Professional & Academic Career",
+                        subtitle: "Solid technical background with a focus on strategic communication.",
+                        expertise: "of expertise",
+                        items: [
+                            {
+                                company: 'IPSOS',
+                                role: 'Project Manager & Data Strategist',
+                                period: 'January 2023 - Present',
+                                showCounter: true,
+                                description: 'End-to-end management of the global CX program for SEAT and CUPRA, leading international teams.',
+                                highlights: [
+                                    'CX product lifecycle management: From stakeholder requirement gathering to global technical deployment.',
+                                    'Leadership of multidisciplinary teams ensuring 100% compliance with critical milestones via JIRA and Smartsheet.',
+                                    'Strategic optimization: Using R programming to automate Big Data reporting.',
+                                    'Business consultancy: Translating complex needs into actionable data architectures.'
+                                ]
+                            },
+                            {
+                                company: 'Carlos III University',
+                                role: 'Master in Political and Electoral Analysis',
+                                period: '2022 - 2023',
+                                description: 'Specialization in quantitative methodology and large-scale data research project management.',
+                                highlights: [
+                                    'Mastery of advanced statistics and programming oriented to solving complex problems.',
+                                    'Development of automation tools for Web Scraping and data processing.'
+                                ]
+                            },
+                            {
+                                company: 'University of Malaga',
+                                role: 'Bachelor in Advertising and PR',
+                                period: '2018 - 2022',
+                                description: 'Base training in corporate communication, account management, and brand strategy.',
+                                highlights: [
+                                    'Specialization in organizing, managing, and communicating organizational image.',
+                                    'Ability to build strong relationships in B2B and B2C contexts.'
+                                ]
+                            }
+                        ]
+                    },
+                    contact: { title: "Let's Talk" }
                 }
-            ];
+            };
 
-            const experience = [
-                {
-                    company: 'IPSOS',
-                    role: 'Project Manager & Data Strategist',
-                    period: 'Enero 2023 - Presente',
-                    showCounter: true,
-                    description: 'Dirección integral del programa global de Customer Experience para SEAT y CUPRA, liderando equipos internacionales.',
-                    highlights: [
-                        'Gestión del ciclo de vida del producto CX: Desde la toma de requerimientos con stakeholders hasta el despliegue técnico global.',
-                        'Liderazgo de equipos multidisciplinares asegurando el 100% de cumplimiento de hitos críticos mediante JIRA y Smartsheet.',
-                        'Optimización estratégica: Uso de programación en R para automatizar el reporting de Big Data.',
-                        'Consultoría de negocio: Traducción de necesidades complejas en arquitecturas de datos accionables.'
-                    ],
-                    icon: 'briefcase'
-                },
-                {
-                    company: 'Universidad Carlos III',
-                    role: 'Máster en Análisis Político y Electoral',
-                    period: '2022 - 2023',
-                    description: 'Especialización en metodología cuantitativa y gestión de proyectos de investigación de datos a gran escala.',
-                    highlights: [
-                        'Dominio de estadística avanzada y programación orientada a la resolución de problemas complejos.',
-                        'Desarrollo de herramientas de automatización para Web Scraping y procesamiento de datos.'
-                    ],
-                    icon: 'graduation-cap'
-                },
-                {
-                    company: 'Universidad de Málaga',
-                    role: 'Grado en Publicidad y RRPP',
-                    period: '2018 - 2022',
-                    description: 'Formación base en comunicación corporativa, gestión de cuentas y estrategia de marca.',
-                    highlights: [
-                        'Especialización en organizar, gestionar y comunicar la imagen de una organización.',
-                        'Capacidad para establecer relaciones sólidas en contextos B2B o B2C.'
-                    ],
-                    icon: 'award'
-                }
-            ];
+            const t = content[lang];
 
             return (
                 <div className="min-h-screen bg-slate-50 text-slate-900">
@@ -183,11 +286,24 @@
                             <span className="font-serif text-2xl tracking-tight font-bold text-slate-900">
                                 Mario <span className="text-emerald-700">González Bisbe</span>
                             </span>
-                            <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-slate-600">
-                                <a href="#about" className="hover:text-emerald-600 transition-colors">Perfil</a>
-                                <a href="#projects" className="hover:text-emerald-600 transition-colors">Proyectos</a>
-                                <a href="#experience" className="hover:text-emerald-600 transition-colors">Trayectoria</a>
-                                <a href="#contact" className="px-4 py-2 bg-slate-900 text-white rounded-full hover:bg-emerald-700 transition-all text-xs">Contacto</a>
+                            <div className="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest text-slate-600">
+                                <a href="#about" className="hover:text-emerald-600 transition-colors">{t.nav.profile}</a>
+                                <a href="#projects" className="hover:text-emerald-600 transition-colors">{t.nav.projects}</a>
+                                <a href="#experience" className="hover:text-emerald-600 transition-colors">{t.nav.career}</a>
+                                
+                                {/* Language Toggle */}
+                                <div className="flex bg-slate-200 p-1 rounded-full items-center">
+                                    <button 
+                                        onClick={() => setLang('es')} 
+                                        className={`px-3 py-1 rounded-full text-[10px] transition-all font-bold ${lang === 'es' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500'}`}
+                                    >ES</button>
+                                    <button 
+                                        onClick={() => setLang('en')} 
+                                        className={`px-3 py-1 rounded-full text-[10px] transition-all font-bold ${lang === 'en' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500'}`}
+                                    >EN</button>
+                                </div>
+
+                                <a href="#contact" className="px-4 py-2 bg-slate-900 text-white rounded-full hover:bg-emerald-700 transition-all text-xs">{t.nav.contact}</a>
                             </div>
                         </div>
                     </nav>
@@ -197,13 +313,13 @@
                         <div className="container mx-auto max-w-5xl flex flex-col md:flex-row gap-12 items-center">
                             <div className="flex-1 space-y-6">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded-full text-xs font-bold uppercase tracking-wider">
-                                    <Icon name="briefcase" size={14} /> Senior Project Manager & Data Strategist
+                                    <Icon name="briefcase" size={14} /> {t.hero.tag}
                                 </div>
                                 <h1 className="text-5xl md:text-7xl font-serif text-slate-900 leading-tight">
-                                    Liderazgo de proyectos con <span className="text-emerald-700 italic">visión de datos.</span>
+                                    {t.hero.title}<span className="text-emerald-700 italic">{t.hero.titleAccent}</span>
                                 </h1>
-                                <p className="text-xl text-slate-600 leading-relaxed max-w-2xl">
-                                    <span className="text-slate-900 font-semibold decoration-emerald-500/30">Gestión de proyectos de experiencia de cliente mediante el manejo de datos avanzado y de equipos </span>.
+                                <p className="text-xl text-slate-600 leading-relaxed max-w-2xl font-medium">
+                                    {t.hero.desc}
                                 </p>
                             </div>
                             
@@ -224,42 +340,41 @@
                     <section id="projects" className="py-24 px-6 bg-slate-100">
                         <div className="container mx-auto max-w-5xl">
                             <div className="mb-16">
-                                <h2 className="text-3xl font-serif text-slate-900">Impacto</h2>
-                                <p className="text-slate-500 mt-2 text-sm italic">Casos de éxito estructurados por resultados tangibles.</p>
+                                <h2 className="text-3xl font-serif text-slate-900">{t.projects.title}</h2>
+                                <p className="text-slate-500 mt-2 text-sm italic">{t.projects.subtitle}</p>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {projects.map((project, idx) => (
-                                    <div key={idx} className="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-all duration-300">
-                                        <div className="flex justify-between items-start mb-6">
-                                            <div className="flex gap-2 flex-wrap">
-                                                {project.tags.map(tag => (
-                                                    <span key={tag} className="text-[9px] font-bold px-2 py-0.5 bg-slate-100 text-slate-500 rounded-full border border-slate-200 uppercase">{tag}</span>
-                                                ))}
+                                {t.projects.items.map((project, idx) => (
+                                    <div key={idx} className="group bg-white rounded-[2rem] border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-xl transition-all duration-300 overflow-hidden">
+                                        <div className="p-8 pb-4 flex-1">
+                                            <div className="flex justify-between items-start mb-6">
+                                                <div className="flex gap-2 flex-wrap">
+                                                    {project.tags.map(tag => (
+                                                        <span key={tag} className="text-[9px] font-bold px-2 py-0.5 bg-slate-100 text-slate-500 rounded-full border border-slate-200 uppercase">{tag}</span>
+                                                    ))}
+                                                </div>
+                                                <div className="text-emerald-600 bg-emerald-50 p-2 rounded-xl">
+                                                    <Icon name="target" size={20} />
+                                                </div>
                                             </div>
-                                            <div className="text-emerald-600 bg-emerald-50 p-2 rounded-xl">
-                                                <Icon name="target" size={20} />
+                                            
+                                            <h3 className="text-2xl font-serif text-slate-900 mb-1 leading-tight group-hover:text-emerald-700 transition-colors">{project.title}</h3>
+                                            <p className="text-emerald-700 font-bold text-[10px] uppercase tracking-widest mb-6">{t.projects.labels.impact}: {project.impact}</p>
+                                            
+                                            <div className="mb-6">
+                                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter mb-2">{t.projects.labels.challenge}</p>
+                                                <p className="text-sm text-slate-700 leading-relaxed">
+                                                    <span className="font-semibold">{project.situacion}</span> {project.desafio}
+                                                </p>
                                             </div>
                                         </div>
-                                        
-                                        <h3 className="text-2xl font-serif text-slate-900 mb-1">{project.title}</h3>
-                                        <p className="text-emerald-700 font-bold text-[10px] uppercase tracking-widest mb-6">Impacto: {project.impact}</p>
-                                        
-                                        <div className="space-y-4 flex-1">
-                                            <div className="grid grid-cols-1 gap-3">
-                                                <div className="p-3 bg-slate-50 rounded-2xl border-l-4 border-slate-200">
-                                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter mb-1">Situación & Desafío</p>
-                                                    <p className="text-sm text-slate-700 leading-snug">
-                                                        <span className="font-semibold">{project.details.situacion}</span> {project.details.desafio}
-                                                    </p>
-                                                </div>
-                                                <div className="p-3 bg-emerald-50 rounded-2xl border-l-4 border-emerald-500">
-                                                    <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter mb-1">Solución & Resultado</p>
-                                                    <p className="text-sm text-slate-700 leading-snug">
-                                                        {project.details.solucion} <span className="text-emerald-700 font-semibold">{project.details.resultado}</span>
-                                                    </p>
-                                                </div>
-                                            </div>
+
+                                        <div className="px-8 py-5 bg-emerald-50/50 border-t border-emerald-100/50">
+                                            <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter mb-2">{t.projects.labels.solution}</p>
+                                            <p className="text-sm text-slate-800 leading-snug">
+                                                {project.solucion} <span className="text-emerald-700 font-bold underline decoration-emerald-200 underline-offset-4">{project.resultado}</span>
+                                            </p>
                                         </div>
                                     </div>
                                 ))}
@@ -271,16 +386,16 @@
                     <section id="experience" className="py-24 px-6 bg-white">
                         <div className="container mx-auto max-w-5xl">
                             <div className="mb-16">
-                                <h2 className="text-3xl font-serif text-slate-900">Trayectoria</h2>
-                                <p className="text-slate-500 text-sm mt-1">Sólida base técnica con enfoque en comunicación estratégica.</p>
+                                <h2 className="text-3xl font-serif text-slate-900">{t.experience.title}</h2>
+                                <p className="text-slate-500 text-sm mt-1">{t.experience.subtitle}</p>
                             </div>
 
                             <div className="space-y-12">
-                                {experience.map((item, index) => (
+                                {t.experience.items.map((item, index) => (
                                     <div key={index} className="flex flex-col md:flex-row gap-8 bg-slate-50 p-8 rounded-3xl border border-slate-100">
                                         <div className="md:w-1/4">
                                             <span className="text-emerald-700 font-bold text-sm">{item.period}</span>
-                                            {item.showCounter && <p className="text-[10px] text-slate-400 font-bold uppercase mt-1 italic tracking-tight">{timeAtIpsos} de expertise</p>}
+                                            {item.showCounter && <p className="text-[10px] text-slate-400 font-bold uppercase mt-1 italic tracking-tight">{timeAtIpsos} {t.experience.expertise}</p>}
                                         </div>
                                         <div className="md:w-3/4 space-y-4">
                                             <div>
@@ -303,33 +418,36 @@
                         </div>
                     </section>
 
-                    {/* Contacto */}
-                    <section id="contact" className="py-24 px-6 bg-slate-900 text-white text-center">
-                        <h2 className="text-4xl md:text-6xl font-serif italic mb-8">
-                            <span className="text-emerald-400">¿Hablamos?</span>
-                        </h2>
-                        
-                        <div className="flex flex-wrap justify-center gap-4 mt-8">
-                           <a href="mailto:mariogbisbe@gmail.com" className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-emerald-600 hover:border-emerald-500 transition-all group">
-                               <Icon name="mail" size={20} className="text-emerald-400 group-hover:text-white" />
-                               <span className="text-sm font-medium">mariogbisbe@gmail.com</span>
-                           </a>
-                           
-                           <a href="https://linkedin.com/in/mariogbisbe" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-emerald-600 hover:border-emerald-500 transition-all group">
-                               <Icon name="linkedin" size={20} className="text-emerald-400 group-hover:text-white" />
-                               <span className="text-sm font-medium">LinkedIn</span>
-                           </a>
+                    {/* Contacto & Footer (Unified Section) */}
+                    <section id="contact" className="pt-24 pb-12 px-6 bg-slate-900 text-white flex flex-col items-center border-t border-white/5">
+                        <div className="max-w-5xl w-full text-center">
+                            <h2 className="text-4xl md:text-6xl font-serif italic mb-8">
+                                <span className="text-emerald-400">{t.contact.title}</span>
+                            </h2>
+                            
+                            <div className="flex flex-wrap justify-center gap-4 mb-20">
+                               <a href="mailto:mariogbisbe@gmail.com" className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-emerald-600 hover:border-emerald-500 transition-all group">
+                                   <Icon name="mail" size={20} className="text-emerald-400 group-hover:text-white" />
+                                   <span className="text-sm font-medium">mariogbisbe@gmail.com</span>
+                               </a>
+                               
+                               <a href="https://linkedin.com/in/mariogbisbe" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-emerald-600 hover:border-emerald-500 transition-all group">
+                                   <Icon name="linkedin" size={20} className="text-emerald-400 group-hover:text-white" />
+                                   <span className="text-sm font-medium">LinkedIn</span>
+                               </a>
 
-                           <div className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full">
-                               <Icon name="phone" size={20} className="text-emerald-400" />
-                               <span className="text-sm font-medium">+34 691 85 82 79</span>
-                           </div>
+                               <div className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full">
+                                   <Icon name="phone" size={20} className="text-emerald-400" />
+                                   <span className="text-sm font-medium">+34 691 85 82 79</span>
+                               </div>
+                            </div>
+
+                            {/* Integrated Signature */}
+                            <div className="pt-8 border-t border-white/10 w-full text-white/40 text-[10px] font-bold uppercase tracking-[0.3em]">
+                                Mario González Bisbe • 2026
+                            </div>
                         </div>
                     </section>
-
-                    <footer className="py-12 text-center text-slate-400 text-[10px] font-bold uppercase tracking-[0.3em] bg-white">
-                        Mario González Bisbe • 2026
-                    </footer>
                 </div>
             );
         };
@@ -339,7 +457,3 @@
     </script>
 </body>
 </html>
-
-
-
-
