@@ -25,6 +25,19 @@
         .bento-card:hover {
             transform: translateY(-5px);
         }
+
+        .client-logo-img {
+            filter: grayscale(100%);
+            opacity: 0.5;
+            transition: all 0.4s ease;
+            max-height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+        .client-logo-img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -61,6 +74,30 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
+            const projects = [
+                {
+                    title: "Programa Global CX: Automoción",
+                    client: "SEAT & CUPRA",
+                    tags: ["Medallia", "JIRA", "PM"],
+                    impact: "Optimización del ciclo de vida de producto CX para despliegue internacional.",
+                    description: "Coordinación de equipos multidisciplinares para la implementación de dashboards estratégicos y arquitectura de datos a gran escala."
+                },
+                {
+                    title: "Automatización de Big Data",
+                    client: "IPSOS Internal",
+                    tags: ["R Programming", "Tidyverse"],
+                    impact: "Reducción significativa en tiempos de procesamiento manual.",
+                    description: "Desarrollo de scripts personalizados en R para la estructuración automática de datos y detección temprana de tendencias en KPIs."
+                },
+                {
+                    title: "Consultoría de Insights Estratégicos",
+                    client: "Global Automotive",
+                    tags: ["Data Strategy", "Reporting"],
+                    impact: "Traducción de requerimientos complejos en soluciones accionables.",
+                    description: "Enlace directo con stakeholders clave para transformar fuentes de datos masivas en visualizaciones de alto impacto ejecutivo."
+                }
+            ];
+
             const experience = [
                 {
                     company: 'IPSOS',
@@ -89,12 +126,12 @@
                 },
                 {
                     company: 'Universidad de Málaga',
-                    role: 'Grado en Publicidad y Relaciones Públicas',
+                    role: 'Grado en Publicidad y RRPP',
                     period: '2018 - 2022',
-                    description: 'Formación en comunicación corporativa, gestión de cuentas y estrategia de marca.',
+                    description: 'Formación base en comunicación corporativa, gestión de cuentas y estrategia de marca.',
                     highlights: [
-                        'Especialización en la gestión de la imagen corporativa y relaciones con stakeholders.',
-                        'Capacidad para establecer relaciones sólidas en contextos B2B y B2C.'
+                        'Especialización en organizar, gestionar y comunicar la imagen de una organización.',
+                        'Capacidad para establecer relaciones sólidas en contextos B2B o B2C.'
                     ],
                     icon: 'award'
                 }
@@ -111,67 +148,93 @@
                             </span>
                             <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-slate-600">
                                 <a href="#about" className="hover:text-emerald-600 transition-colors">Perfil</a>
-                                <a href="#stack" className="hover:text-emerald-600 transition-colors">Stack Técnico</a>
-                                <a href="#experience" className="hover:text-emerald-600 transition-colors">Experiencia</a>
-                                <a href="#contact" className="px-4 py-2 bg-slate-900 text-white rounded-full hover:bg-emerald-700 transition-all">Contacto</a>
+                                <a href="#stack" className="hover:text-emerald-600 transition-colors">Stack</a>
+                                <a href="#projects" className="hover:text-emerald-600 transition-colors">Proyectos</a>
+                                <a href="#experience" className="hover:text-emerald-600 transition-colors">Trayectoria</a>
+                                <a href="#contact" className="px-4 py-2 bg-slate-900 text-white rounded-full hover:bg-emerald-700 transition-all text-xs">Contacto</a>
                             </div>
                         </div>
                     </nav>
 
                     {/* Hero Section */}
-                    <section id="about" className="pt-32 pb-20 px-6 border-b border-slate-200 bg-gradient-to-b from-white to-slate-50">
+                    <section id="about" className="pt-32 pb-12 px-6 bg-gradient-to-b from-white to-slate-50">
                         <div className="container mx-auto max-w-5xl flex flex-col md:flex-row gap-12 items-center">
                             <div className="flex-1 space-y-6">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded-full text-xs font-bold uppercase">
-                                    <Icon name="sparkles" size={14} /> Senior Project Manager & Data-Driven Strategist
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded-full text-xs font-bold uppercase tracking-wider">
+                                    <Icon name="sparkles" size={14} /> Senior Project Manager & Data Strategist
                                 </div>
                                 <h1 className="text-5xl md:text-7xl font-serif text-slate-900 leading-tight">
                                     Liderazgo de proyectos con <span className="text-emerald-700 italic">visión de datos.</span>
                                 </h1>
                                 <p className="text-xl text-slate-600 leading-relaxed max-w-2xl">
-                                    Project Manager en <span className="text-slate-900 font-semibold">IPSOS</span>. Experto en transformar Big Data en decisiones de negocio mediante <span className="text-slate-900 font-semibold">R, Medallia y Excel</span>.
+                                    Impulsando la experiencia de cliente mediante el análisis avanzado y la gestión técnica en <span className="text-slate-900 font-semibold italic underline decoration-emerald-500/30">IPSOS</span>.
                                 </p>
-                                
-                                <div className="flex flex-wrap gap-x-6 gap-y-4 pt-4 border-t border-slate-100 mt-8">
-                                    <div className="flex items-center gap-2 text-slate-500">
-                                        <Icon name="phone" size={18} />
-                                        <span className="text-sm font-medium">+34 691 85 82 79</span>
-                                    </div>
-                                    <a href="mailto:mariogbisbe@gmail.com" className="flex items-center gap-2 text-slate-500 hover:text-emerald-600 transition-colors">
-                                        <Icon name="mail" size={18} />
-                                        <span className="text-sm font-medium">mariogbisbe@gmail.com</span>
-                                    </a>
-                                    <a href="https://linkedin.com/in/mariogbisbe" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-500 hover:text-emerald-600 transition-colors">
-                                        <Icon name="linkedin" size={18} />
-                                        <span className="text-sm font-medium">linkedin.com/in/mariogbisbe</span>
-                                    </a>
-                                </div>
                             </div>
                             
                             <div className="w-64 h-64 md:w-80 md:h-80 relative">
                                 <div className="absolute inset-0 bg-emerald-600 rounded-3xl rotate-6 opacity-10"></div>
-                                <div className="absolute inset-0 bg-slate-900 rounded-3xl -rotate-3 overflow-hidden shadow-2xl border-4 border-white flex items-center justify-center">
+                                <div className="absolute inset-0 bg-slate-900 rounded-3xl -rotate-3 overflow-hidden shadow-2xl border-4 border-white">
                                     <img 
                                         src="https://media.licdn.com/dms/image/v2/D4E03AQEXOzS0cSwGLg/profile-displayphoto-crop_800_800/B4EZxCHPYWI0AI-/0/1770635720946?e=1772064000&v=beta&t=vnF8hyX45y7jQXoa8Md6AFJZuPzIN3BA7xB1tTPtgDQ" 
                                         alt="Mario González Bisbe" 
-                                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
+                                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                                     />
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Bento Stack Técnico Ajustado */}
+                    {/* Trusted By / Clients Section - ORDENADOS: IPSOS, CUPRA, SEAT */}
+                    <section className="py-12 border-y border-slate-200 bg-white">
+                        <div className="container mx-auto max-w-5xl px-6">
+                            <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-10 italic">Colaborando con líderes del sector</p>
+                            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-32">
+                                {/* Logo IPSOS */}
+                                <div className="flex items-center justify-center">
+                                    <img 
+                                        src="https://www.vectorlogo.es/wp-content/uploads/2019/09/logo-vector-ipsos.jpg" 
+                                        alt="Logo IPSOS" 
+                                        className="client-logo-img"
+                                        onError={(e) => { e.target.src='https://placehold.co/150x50/white/64748b?text=IPSOS'; }}
+                                    />
+                                    {/* <!-- COMENTARIO: Inserta el link de IPSOS arriba en el src --> */}
+                                </div>
+                                
+                                {/* Logo CUPRA */}
+                                <div className="flex items-center justify-center">
+                                    <img 
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Cupra.svg/1280px-Cupra.svg.png" 
+                                        alt="Logo CUPRA" 
+                                        className="client-logo-img"
+                                        onError={(e) => { e.target.src='https://placehold.co/150x50/white/64748b?text=CUPRA'; }}
+                                    />
+                                    {/* <!-- COMENTARIO: Inserta el link de CUPRA arriba en el src --> */}
+                                </div>
+
+                                {/* Logo SEAT */}
+                                <div className="flex items-center justify-center">
+                                    <img 
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/SEAT_Logo_from_2017.svg/1280px-SEAT_Logo_from_2017.svg.png" 
+                                        alt="Logo SEAT" 
+                                        className="client-logo-img"
+                                        onError={(e) => { e.target.src='https://placehold.co/150x50/white/64748b?text=SEAT'; }}
+                                    />
+                                    {/* <!-- COMENTARIO: Inserta el link de SEAT arriba en el src --> */}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Bento Stack Técnico */}
                     <section id="stack" className="py-24 px-6 bg-white overflow-hidden">
                         <div className="container mx-auto max-w-5xl">
                             <div className="mb-12">
                                 <h2 className="text-3xl font-serif text-slate-900">Stack de Competencias</h2>
-                                <p className="text-slate-500 mt-2">Equilibrio entre la gestión estratégica y la potencia analítica.</p>
+                                <p className="text-slate-500 mt-2 italic text-sm">Especialización en la intersección de negocio y tecnología.</p>
                             </div>
                             
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-full">
-                                
-                                {/* Liderazgo de Proyectos & Project Management - DESTACADO ARRIBA */}
+                                {/* Project Management (PM) */}
                                 <div className="md:col-span-6 bento-card bg-emerald-700 rounded-3xl p-8 text-white relative overflow-hidden group">
                                     <div className="relative z-10 flex flex-col h-full">
                                         <div className="flex items-center gap-3 mb-6">
@@ -180,12 +243,12 @@
                                             </div>
                                             <span className="font-bold text-xl uppercase tracking-tight">Project Management (PM)</span>
                                         </div>
-                                        <p className="text-emerald-50 leading-relaxed mb-6">
-                                            Dirección estratégica de programas globales de CX. Coordinación de equipos internacionales, gestión del ciclo de vida de producto y aplicación de metodologías ágiles para asegurar el 100% de cumplimiento de hitos.
+                                        <p className="text-emerald-50 leading-relaxed mb-6 text-sm">
+                                            Dirección estratégica de programas globales. Gestión del ciclo de vida de producto y coordinación de equipos internacionales con JIRA.
                                         </p>
                                         <div className="mt-auto flex items-center gap-4">
-                                            <div className="px-3 py-1 bg-white/10 rounded-lg text-[10px] font-bold uppercase tracking-widest border border-white/20 shadow-sm">Jira Expert</div>
-                                            <div className="px-3 py-1 bg-white/10 rounded-lg text-[10px] font-bold uppercase tracking-widest border border-white/20 shadow-sm">Smartsheet</div>
+                                            <div className="px-3 py-1 bg-white/10 rounded-lg text-[10px] font-bold uppercase border border-white/20">Jira Expert</div>
+                                            <div className="px-3 py-1 bg-white/10 rounded-lg text-[10px] font-bold uppercase border border-white/20">Smartsheet</div>
                                         </div>
                                     </div>
                                     <div className="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -193,7 +256,7 @@
                                     </div>
                                 </div>
 
-                                {/* R & Data Science - DESTACADO ARRIBA */}
+                                {/* R & Data Strategy */}
                                 <div className="md:col-span-6 bento-card bg-slate-900 rounded-3xl p-8 text-white relative overflow-hidden group">
                                     <div className="relative z-10 flex flex-col h-full">
                                         <div className="flex items-center gap-3 mb-6">
@@ -202,12 +265,11 @@
                                             </div>
                                             <span className="font-bold text-xl uppercase tracking-tight">R & Data Strategy</span>
                                         </div>
-                                        <p className="text-slate-400 leading-relaxed mb-6">
-                                            Especialista en análisis estadístico y manipulación de Big Data. Desarrollo de automatizaciones y herramientas de Web Scraping para transformar datos brutos en insights accionables de negocio.
+                                        <p className="text-slate-400 leading-relaxed mb-6 text-sm">
+                                            Análisis estadístico y manipulación de Big Data. Automatización de reporting y Web Scraping para insights de negocio.
                                         </p>
                                         <div className="mt-auto flex gap-2">
                                             <span className="px-3 py-1 bg-white/10 rounded-lg text-[10px] font-mono text-emerald-400">#tidyverse</span>
-                                            <span className="px-3 py-1 bg-white/10 rounded-lg text-[10px] font-mono text-emerald-400">#ggplot2</span>
                                             <span className="px-3 py-1 bg-white/10 rounded-lg text-[10px] font-mono text-emerald-400">#automation</span>
                                         </div>
                                     </div>
@@ -216,72 +278,77 @@
                                     </div>
                                 </div>
 
-                                {/* Medallia - Fila Inferior */}
-                                <div className="md:col-span-7 bento-card bg-emerald-50 border border-emerald-100 rounded-3xl p-8 flex flex-col md:flex-row gap-8 group">
+                                {/* Medallia SME */}
+                                <div className="md:col-span-12 bento-card bg-emerald-50 border border-emerald-100 rounded-3xl p-8 flex flex-col md:flex-row gap-8">
                                     <div className="flex-1">
                                         <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center text-emerald-600 shadow-sm mb-6">
                                             <Icon name="layers" size={24} />
                                         </div>
-                                        <h3 className="text-2xl font-serif text-slate-900 mb-2">Medallia SME</h3>
-                                        <p className="text-slate-600 text-sm leading-relaxed italic mb-4">Arquitectura de programas CX y despliegue de dashboards globales.</p>
-                                    </div>
-                                    <div className="flex flex-col justify-center space-y-2">
-                                        <div className="p-3 bg-white rounded-xl shadow-sm border border-emerald-100 flex items-center gap-3">
-                                            <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                                            <span className="text-xs font-bold text-slate-700 uppercase tracking-tight">Data Architecture</span>
-                                        </div>
-                                        <div className="p-3 bg-white rounded-xl shadow-sm border border-emerald-100 flex items-center gap-3">
-                                            <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                                            <span className="text-xs font-bold text-slate-700 uppercase tracking-tight">Reporting Strategy</span>
-                                        </div>
+                                        <h3 className="text-2xl font-serif text-slate-900 mb-2">Medallia SME / Expert</h3>
+                                        <p className="text-slate-600 text-sm leading-relaxed italic max-w-xl">Liderando la arquitectura de dashboards de CX, diseño de cuestionarios y recolección de datos estratégicos para el mercado automotriz.</p>
                                     </div>
                                 </div>
-
-                                {/* Excel - Fila Inferior */}
-                                <div className="md:col-span-5 bento-card bg-slate-100 rounded-3xl p-8 flex flex-col justify-between group">
-                                    <div className="flex justify-between items-start">
-                                        <Icon name="file-spreadsheet" className="text-slate-500" />
-                                        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Excel Expert</span>
-                                    </div>
-                                    <p className="text-slate-700 text-sm font-medium mt-4 leading-snug italic">
-                                        Modelado de datos complejo y procesamiento avanzado para el soporte a la toma de decisiones ejecutivas.
-                                    </p>
-                                    <div className="mt-6 flex items-center gap-2">
-                                        <div className="h-1 flex-1 bg-slate-200 rounded-full overflow-hidden">
-                                            <div className="h-full bg-emerald-600 w-full opacity-30"></div>
-                                        </div>
-                                        <span className="text-[10px] font-bold text-slate-400">MASTER LEVEL</span>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </section>
 
-                    {/* Trayectoria */}
-                    <section id="experience" className="py-24 px-6 bg-slate-50">
+                    {/* Sección de Proyectos / Portfolio */}
+                    <section id="projects" className="py-24 px-6 bg-slate-100">
                         <div className="container mx-auto max-w-5xl">
                             <div className="mb-16">
-                                <h2 className="text-3xl font-serif text-slate-900">Experiencia Profesional</h2>
+                                <h2 className="text-3xl font-serif text-slate-900">Portfolio de Impacto</h2>
+                                <p className="text-slate-500 mt-2 text-sm italic">Casos de uso que demuestran metodología y resultados tangibles.</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {projects.map((project, idx) => (
+                                    <div key={idx} className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-md transition-shadow">
+                                        <div className="flex justify-between items-start mb-6">
+                                            <div className="flex gap-2">
+                                                {project.tags.map(tag => (
+                                                    <span key={tag} className="text-[9px] font-bold px-2 py-0.5 bg-slate-100 text-slate-500 rounded-full border border-slate-200 uppercase">{tag}</span>
+                                                ))}
+                                            </div>
+                                            <Icon name="folder-kanban" className="text-emerald-600" size={20} />
+                                        </div>
+                                        <h3 className="text-xl font-serif text-slate-900 mb-2">{project.title}</h3>
+                                        <p className="text-xs font-bold text-emerald-700 uppercase mb-4 tracking-tighter">Impacto: {project.impact}</p>
+                                        <p className="text-sm text-slate-500 leading-relaxed mb-6 flex-1 italic">"{project.description}"</p>
+                                        <div className="pt-4 border-t border-slate-50 flex items-center gap-2 text-slate-400">
+                                            <Icon name="shield-check" size={14} />
+                                            <span className="text-[10px] font-medium uppercase tracking-widest">Protocolo de Confidencialidad</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Trayectoria Completa */}
+                    <section id="experience" className="py-24 px-6 bg-white">
+                        <div className="container mx-auto max-w-5xl">
+                            <div className="mb-16">
+                                <h2 className="text-3xl font-serif text-slate-900">Trayectoria Profesional y Académica</h2>
+                                <p className="text-slate-500 text-sm mt-1">Sólida base técnica con enfoque en comunicación estratégica.</p>
                             </div>
 
                             <div className="space-y-12">
                                 {experience.map((item, index) => (
-                                    <div key={index} className="flex flex-col md:flex-row gap-8 bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+                                    <div key={index} className="flex flex-col md:flex-row gap-8 bg-slate-50 p-8 rounded-3xl border border-slate-100">
                                         <div className="md:w-1/4">
-                                            <span className="text-emerald-600 font-bold text-sm">{item.period}</span>
-                                            {item.showCounter && <p className="text-[10px] text-slate-400 font-bold uppercase mt-1 italic">{timeAtIpsos}</p>}
+                                            <span className="text-emerald-700 font-bold text-sm">{item.period}</span>
+                                            {item.showCounter && <p className="text-[10px] text-slate-400 font-bold uppercase mt-1 italic tracking-tight">{timeAtIpsos} de expertise</p>}
                                         </div>
                                         <div className="md:w-3/4 space-y-4">
                                             <div>
                                                 <h3 className="text-2xl font-serif text-slate-900">{item.role}</h3>
-                                                <p className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">{item.company}</p>
+                                                <p className="text-emerald-600 font-bold uppercase text-[10px] tracking-widest">{item.company}</p>
                                             </div>
-                                            <p className="text-slate-600 leading-relaxed">{item.description}</p>
-                                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-4 border-t border-slate-50">
+                                            <p className="text-slate-600 leading-relaxed text-sm italic">{item.description}</p>
+                                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-4 border-t border-slate-200">
                                                 {item.highlights.map((h, i) => (
-                                                    <li key={i} className="flex gap-2 text-sm text-slate-500 italic">
-                                                        <Icon name="check" size={14} className="text-emerald-500 mt-1" />
+                                                    <li key={i} className="flex gap-2 text-[13px] text-slate-500">
+                                                        <Icon name="chevron-right" size={12} className="text-emerald-500 mt-1 flex-shrink-0" />
                                                         {h}
                                                     </li>
                                                 ))}
@@ -297,28 +364,29 @@
                     <section id="contact" className="py-32 px-6 bg-slate-900 text-white relative overflow-hidden">
                         <div className="container mx-auto max-w-4xl text-center space-y-12 relative z-10">
                             <h2 className="text-4xl md:text-6xl font-serif leading-tight italic">
-                                ¿Trabajamos juntos?
+                                ¿Hablamos de tu <span className="text-emerald-400">proyecto?</span>
                             </h2>
+                            <p className="text-slate-400 max-w-xl mx-auto italic">Disponible para nuevos retos estratégicos donde los datos y la gestión marquen la diferencia.</p>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
-                                <a href="mailto:mariogbisbe@gmail.com" className="p-8 bg-white/5 rounded-3xl border border-white/10 hover:bg-emerald-600 transition-all">
-                                    <Icon name="mail" size={32} className="mb-4 text-emerald-400" />
-                                    <p className="font-bold">mariogbisbe@gmail.com</p>
+                                <a href="mailto:mariogbisbe@gmail.com" className="p-8 bg-white/5 rounded-3xl border border-white/10 hover:bg-emerald-600 transition-all flex flex-col items-center group">
+                                    <Icon name="mail" size={32} className="mb-4 text-emerald-400 group-hover:text-white transition-colors" />
+                                    <p className="font-bold text-sm">mariogbisbe@gmail.com</p>
                                 </a>
-                                <a href="https://linkedin.com/in/mariogbisbe" target="_blank" rel="noopener noreferrer" className="p-8 bg-white/5 rounded-3xl border border-white/10 hover:bg-emerald-600 transition-all">
-                                    <Icon name="linkedin" size={32} className="mb-4 text-emerald-400" />
-                                    <p className="font-bold">LinkedIn</p>
+                                <a href="https://linkedin.com/in/mariogbisbe" target="_blank" rel="noopener noreferrer" className="p-8 bg-white/5 rounded-3xl border border-white/10 hover:bg-emerald-600 transition-all flex flex-col items-center group">
+                                    <Icon name="linkedin" size={32} className="mb-4 text-emerald-400 group-hover:text-white transition-colors" />
+                                    <p className="font-bold text-sm">LinkedIn</p>
                                 </a>
-                                <a href="tel:+34691858279" className="p-8 bg-white/5 rounded-3xl border border-white/10 hover:bg-emerald-600 transition-all">
+                                <div className="p-8 bg-white/5 rounded-3xl border border-white/10 flex flex-col items-center">
                                     <Icon name="phone" size={32} className="mb-4 text-emerald-400" />
-                                    <p className="font-bold">+34 691 85 82 79</p>
-                                </a>
+                                    <p className="font-bold text-sm">+34 691 85 82 79</p>
+                                </div>
                             </div>
                         </div>
                     </section>
 
                     {/* Footer */}
-                    <footer className="py-8 text-center text-slate-400 text-xs border-t border-slate-200">
-                        © 2024 Mario González Bisbe. Project Management & Data Strategy.
+                    <footer className="py-12 text-center text-slate-400 text-[10px] font-bold uppercase tracking-[0.3em] bg-white">
+                        Mario González Bisbe • Project Management & Data Science • 2024
                     </footer>
 
                 </div>
